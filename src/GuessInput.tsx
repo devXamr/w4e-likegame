@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-export default function GuessInput({listAdder}){
+export default function GuessInput({listAdder, countIncrementer, count}){
     const [guess, setGuess] = useState('')
     const [triggerError, setTriggerError] = useState(false)
 
@@ -13,6 +13,7 @@ export default function GuessInput({listAdder}){
         } else if (guess.length === 5){
             setTriggerError(false)
             listAdder(prev => [...prev, {guess: guess, id: crypto.randomUUID()}])
+            countIncrementer(prev => prev + 1)
             setGuess('')
 
         }
@@ -24,7 +25,7 @@ export default function GuessInput({listAdder}){
        handleGuessSubmission(e)
     }}>
         <label>Enter guess:</label>
-        <input value={guess}  onChange={(e) => {setGuess((e.target.value).toUpperCase())}} type='text' min='5' max='5'/>
+        <input disabled={count >= 6} value={guess}  onChange={(e) => {setGuess((e.target.value).toUpperCase())}} type='text' min='5' max='5'/>
         {triggerError && <div className='text-red-600'>The length should be 5</div>}
     </form>
 }
