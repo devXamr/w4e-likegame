@@ -8,7 +8,7 @@ export default function Game(){
 
     return <div>
         <div>
-            {guessList.map(eachItem => <div key={eachItem.id}>{eachItem.guess}</div>)}
+            {guessList.map(eachItem => <p key={eachItem.id}>{eachItem.guess}</p>)}
         </div>
         <GuessInput listAdder={setGuessList}/>
     </div>
