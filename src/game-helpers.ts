@@ -1,5 +1,5 @@
 
-export function checkGuess(guess, answer) {
+export function checkGuess(guess: string | undefined, answer: string) {
 
     const SOLVED_CHAR = '✓';
 

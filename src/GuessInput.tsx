@@ -1,10 +1,11 @@
-import {useState} from "react";
+import {FormEvent, useState} from "react";
+import {GuessInputProps} from "./types.ts";
 
-export default function GuessInput({listAdder, countIncrementer, count, earlyFound}){
+export default function GuessInput({listAdder, countIncrementer, count, earlyFound}: GuessInputProps){
     const [guess, setGuess] = useState('')
     const [triggerError, setTriggerError] = useState(false)
 
-    function handleGuessSubmission(e){
+    function handleGuessSubmission(e : FormEvent<HTMLFormElement>){
         e.preventDefault()
 
         if( guess.length < 5 || guess.length > 5){

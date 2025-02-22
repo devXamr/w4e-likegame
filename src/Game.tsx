@@ -1,15 +1,15 @@
 import GuessInput from "./GuessInput.tsx";
-import {use, useEffect, useState} from "react";
-import SingleGuessRow from "./SingleGuessRow.tsx";
+import {FormEvent, useEffect, useState} from "react";
 import AllRowHandler from "./AllRowHandler.tsx";
 import {motion} from 'motion/react'
+import {Guess} from "./types.ts";
 
 export default function Game(){
 
     const NUM_OF_ROWS = 6
 
 
-    const [guessList, setGuessList] = useState([])
+    const [guessList, setGuessList] = useState<Guess[]>([])
     const [submitCount, setSubmitCount] = useState(0)
     const [correctFound, setCorrectFound] = useState(false)
     const [earlyFound, setEarlyFound] = useState(false)
@@ -20,7 +20,7 @@ export default function Game(){
         }
     }, [correctFound, submitCount]);
 
-    function handleReset(e){
+    function handleReset(e: FormEvent<HTMLFormElement>){
         e.preventDefault()
         setGuessList([])
         setSubmitCount(0)

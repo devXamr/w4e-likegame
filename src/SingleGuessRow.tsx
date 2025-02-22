@@ -1,8 +1,9 @@
 
 import {checkGuess} from "./game-helpers.ts";
 import {range} from "./utils.ts";
+import {SingleGuessRowProps} from "./types.ts";
 
-export default function SingleGuessRow({word = '', answer, correctSetter}) {
+export default function SingleGuessRow({word = '', answer, correctSetter}: SingleGuessRowProps) {
 
     const result = checkGuess(word, answer)
     console.log(result)
